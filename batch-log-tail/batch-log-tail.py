@@ -6,7 +6,7 @@ def monitor_logs(directory, lines=10, interval=2):
     log_files = [os.path.join(directory, f) for f in os.listdir(directory) if f.endswith('.log')]
     file_positions = {file: 0 for file in log_files}
 
-    print(f"\nPrinting file: {log_files}\n")
+    # print(f"\nPrinting file: {log_files}\n")
 
     print(f"Monitoring logs in directory: {directory}")
     while True:
@@ -16,7 +16,7 @@ def monitor_logs(directory, lines=10, interval=2):
                     f.seek(file_positions[file])
                     new_data = f.read()
                     if new_data:
-                        print(f"\n--- New data in {file} ---")
+                        print(f"\n--- New data in {file} ---")  
                         print(new_data, end='')
                         file_positions[file] = f.tell()
             except FileNotFoundError:
